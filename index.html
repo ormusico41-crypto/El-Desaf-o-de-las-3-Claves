@@ -1,123 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pentagrama Master - El Rincón del Profe Orlando</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Critical CSS to prevent FOUC */
-        body {
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        body.loaded {
-            opacity: 1;
-        }
+        body { opacity: 0; transition: opacity 0.3s; }
+        body.loaded { opacity: 1; }
     </style>
 </head>
-
 <body class="theme-light">
-
     <div class="app-container">
-        <!-- Header -->
         <header class="main-header">
             <h1 id="app-title">El Rincón del Profe Orlando</h1>
             <div class="header-controls">
-                <button id="lang-toggle" class="btn-icon" aria-label="Cambiar Idioma">
+                <button id="lang-toggle" class="btn-icon">
                     <span class="lang-text">ES</span>
                 </button>
             </div>
         </header>
 
-        <!-- Main Content Area -->
         <main id="main-content">
-
-            <!-- SCREENS -->
-
-            <!-- 1. Settings / Start Screen -->
             <section id="screen-settings" class="screen active">
                 <div class="card settings-card">
-                    <h2 data-i18n="game_title">Pentagrama Master</h2>
-                    <p class="subtitle" data-i18n="challenge_subtitle">El Desafío de las 3 Claves</p>
-
+                    <h2>Pentagrama Master</h2>
+                    <p class="subtitle">El Desafío de las 3 Claves</p>
                     <div class="form-group">
-                        <label data-i18n="select_clef">Selecciona la Clave</label>
+                        <label>Selecciona la Clave</label>
                         <div class="toggle-group" id="clef-selector">
-                            <button class="toggle-btn active" data-value="treble" data-i18n="clef_sol">Sol</button>
-                            <button class="toggle-btn" data-value="bass" data-i18n="clef_fa">Fa</button>
-                            <button class="toggle-btn" data-value="alto" data-i18n="clef_do">Do</button>
-                            <button class="toggle-btn" data-value="mixed" data-i18n="clef_mixed">Mix</button>
+                            <button class="toggle-btn active" data-value="treble">Sol</button>
+                            <button class="toggle-btn" data-value="bass">Fa</button>
+                            <button class="toggle-btn" data-value="alto">Do</button>
+                            <button class="toggle-btn" data-value="mixed">Mix</button>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label data-i18n="difficulty">Dificultad</label>
+                        <label>Dificultad</label>
                         <div class="toggle-group" id="difficulty-selector">
-                            <button class="toggle-btn active" data-value="easy" data-i18n="easy">Fácil</button>
-                            <button class="toggle-btn" data-value="hard" data-i18n="hard">Avanzado</button>
+                            <button class="toggle-btn active" data-value="easy">Fácil</button>
+                            <button class="toggle-btn" data-value="hard">Avanzado</button>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <button id="btn-sound-test" class="btn-secondary">
-                            <span data-i18n="tap_to_start">Toca para activar sonido</span> 🔊
-                        </button>
+                        <button id="btn-sound-test" class="btn-secondary">Toca para activar sonido 🔊</button>
                     </div>
-
-                    <button id="btn-start" class="btn-primary btn-large" data-i18n="start_game">¡Jugar!</button>
+                    <button id="btn-start" class="btn-primary btn-large">¡Jugar!</button>
                 </div>
             </section>
 
-            <!-- 2. Game Screen -->
             <section id="screen-game" class="screen hidden">
                 <div class="game-header">
-                    <button id="btn-quit" class="btn-quit-text">
-                        Volver
-                    </button>
-                    <div class="progress-container">
-                        <div id="visual-timer" class="timer-bar"></div>
-                    </div>
-                    <div class="score-board">
-                        <span data-i18n="score">Puntos</span>: <span id="current-score">0</span> / 12
-                    </div>
+                    <button id="btn-quit" class="btn-quit-text">Volver</button>
+                    <div class="progress-container"><div id="visual-timer" class="timer-bar"></div></div>
+                    <div class="score-board">Puntos: <span id="current-score">0</span> / 12</div>
                 </div>
-
                 <div class="staff-container-wrapper">
-                    <div id="staff-container">
-                        <!-- SVG Staff will be rendered here -->
-                    </div>
+                    <div id="staff-container"></div>
                 </div>
-
-                <div class="options-grid" id="options-container">
-                    <!-- Buttons will be injected by JS -->
-                </div>
+                <div class="options-grid" id="options-container"></div>
             </section>
 
-            <!-- 3. End Screen -->
             <section id="screen-end" class="screen hidden">
                 <div class="card end-card">
-                    <h2 data-i18n="game_over">¡Juego Terminado!</h2>
-                    <div class="final-score">
-                        <span id="final-score-value">0</span>
-                        <span class="total">/ 12</span>
-                    </div>
-                    <p id="feedback-message" class="feedback-text">¡Bien hecho!</p>
-                    <button id="btn-restart" class="btn-primary" data-i18n="play_again">Jugar de Nuevo</button>
+                    <h2>¡Juego Terminado!</h2>
+                    <div class="final-score"><span id="final-score-value">0</span><span class="total">/ 12</span></div>
+                    <p class="feedback-text">¡Sigue practicando, maestro!</p>
+                    <button id="btn-restart" class="btn-primary">Jugar de Nuevo</button>
                 </div>
             </section>
-
         </main>
-
-        <footer>
-            <p>Pentagrama Master &copy; 2024</p>
-        </footer>
+        <footer><p>Pentagrama Master &copy; 2024</p></footer>
     </div>
-
-    <!-- Scripts -->
-    <script src="script.js?v=2"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
