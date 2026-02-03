@@ -5,57 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pentagrama Master - El Rincón del Profe Orlando</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body { opacity: 0; transition: opacity 0.3s; }
-        body.loaded { opacity: 1; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body class="theme-light">
     <div class="app-container">
         <header class="main-header">
             <h1 id="app-title">El Rincón del Profe Orlando</h1>
-            <div class="header-controls">
-                <button id="lang-toggle" class="btn-icon">
-                    <span class="lang-text">ES</span>
-                </button>
-            </div>
+            <button id="lang-toggle" class="btn-lang">ES</button>
         </header>
 
         <main id="main-content">
             <section id="screen-settings" class="screen active">
                 <div class="card settings-card">
-                    <h2>Pentagrama Master</h2>
-                    <p class="subtitle">El Desafío de las 3 Claves</p>
-                    <div class="form-group">
-                        <label>Selecciona la Clave</label>
-                        <div class="toggle-group" id="clef-selector">
-                            <button class="toggle-btn active" data-value="treble">Sol</button>
-                            <button class="toggle-btn" data-value="bass">Fa</button>
-                            <button class="toggle-btn" data-value="alto">Do</button>
-                            <button class="toggle-btn" data-value="mixed">Mix</button>
+                    <h2 class="title-hero">Pentagrama Master</h2>
+                    <p class="subtitle">¡El Desafío de las 3 Claves!</p>
+                    
+                    <div class="setup-grid">
+                        <div class="form-group">
+                            <label>Clave</label>
+                            <div class="toggle-group" id="clef-selector">
+                                <button class="toggle-btn active" data-value="treble">Sol</button>
+                                <button class="toggle-btn" data-value="bass">Fa</button>
+                                <button class="toggle-btn" data-value="alto">Do</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Nivel</label>
+                            <div class="toggle-group" id="difficulty-selector">
+                                <button class="toggle-btn active" data-value="easy">Fácil</button>
+                                <button class="toggle-btn" data-value="hard">Pro</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Dificultad</label>
-                        <div class="toggle-group" id="difficulty-selector">
-                            <button class="toggle-btn active" data-value="easy">Fácil</button>
-                            <button class="toggle-btn" data-value="hard">Avanzado</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button id="btn-sound-test" class="btn-secondary">Toca para activar sonido 🔊</button>
-                    </div>
-                    <button id="btn-start" class="btn-primary btn-large">¡Jugar!</button>
+
+                    <button id="btn-start" class="btn-primary">¡EMPEZAR A JUGAR!</button>
+                    <p class="tap-hint">🔊 Asegúrate de tener el sonido activo</p>
                 </div>
             </section>
 
             <section id="screen-game" class="screen hidden">
                 <div class="game-header">
-                    <button id="btn-quit" class="btn-quit-text">Volver</button>
+                    <button id="btn-quit" class="btn-back">Volver</button>
                     <div class="progress-container"><div id="visual-timer" class="timer-bar"></div></div>
-                    <div class="score-board">Puntos: <span id="current-score">0</span> / 12</div>
+                    <div class="score-pill">Puntos: <span id="current-score">0</span>/12</div>
                 </div>
-                <div class="staff-container-wrapper">
+                <div class="staff-card">
                     <div id="staff-container"></div>
                 </div>
                 <div class="options-grid" id="options-container"></div>
@@ -63,14 +57,13 @@
 
             <section id="screen-end" class="screen hidden">
                 <div class="card end-card">
-                    <h2>¡Juego Terminado!</h2>
-                    <div class="final-score"><span id="final-score-value">0</span><span class="total">/ 12</span></div>
-                    <p class="feedback-text">¡Sigue practicando, maestro!</p>
-                    <button id="btn-restart" class="btn-primary">Jugar de Nuevo</button>
+                    <h2 class="finish-title">¡Final del Juego!</h2>
+                    <div class="result-circle"><span id="final-score-value">0</span></div>
+                    <p id="feedback-msg">¡Buen trabajo!</p>
+                    <button id="btn-restart" class="btn-primary">REINTENTAR</button>
                 </div>
             </section>
         </main>
-        <footer><p>Pentagrama Master &copy; 2024</p></footer>
     </div>
     <script src="script.js"></script>
 </body>
