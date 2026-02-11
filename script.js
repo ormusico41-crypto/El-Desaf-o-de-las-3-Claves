@@ -494,7 +494,7 @@ const StaffRenderer = {
         // Staff height is 200. Clean space roughly 0-200.
 
         if (clefType === 'treble') {
-            setHref(clefImg, "./assets/images/clef_treble.png");
+            setHref(clefImg, "assets/images/clef_treble.png");
             // Treble Image: +20% size (84x156), adjusted Y to center spiral
             clefImg.setAttribute("x", "0");
             clefImg.setAttribute("y", "42");
@@ -502,7 +502,7 @@ const StaffRenderer = {
             clefImg.setAttribute("height", "156");
 
         } else if (clefType === 'bass') {
-            setHref(clefImg, "./assets/images/clef_bass.png");
+            setHref(clefImg, "assets/images/clef_bass.png");
             // Bass Image: Moved up ~5% (Y=75)
             // dots need to be on 4th line (Y=100)
             clefImg.setAttribute("x", "5");
@@ -511,7 +511,7 @@ const StaffRenderer = {
             clefImg.setAttribute("height", "80");
 
         } else if (clefType === 'alto') {
-            setHref(clefImg, "./assets/images/clef_alto.png");
+            setHref(clefImg, "assets/images/clef_alto.png");
             // Alto Image
             clefImg.setAttribute("x", "5");
             clefImg.setAttribute("y", "80");
