@@ -19,7 +19,10 @@ const TRANSLATIONS = {
         score: "Puntos",
         game_over: "¡Juego Terminado!",
         play_again: "Jugar de Nuevo",
-        tap_to_start: "Toca para activar sonido"
+        play_again: "Jugar de Nuevo",
+        tap_to_start: "Toca para activar sonido",
+        report_clef: "Clave",
+        report_difficulty: "Nivel"
     },
     en: {
         game_title: "Staff Master",
@@ -36,7 +39,9 @@ const TRANSLATIONS = {
         score: "Score",
         game_over: "Game Over!",
         play_again: "Play Again",
-        tap_to_start: "Tap to enable sound"
+        tap_to_start: "Tap to enable sound",
+        report_clef: "Clef",
+        report_difficulty: "Level"
     }
 };
 
@@ -111,7 +116,10 @@ class GameEngine {
             optionsContainer: document.getElementById('options-container'),
 
             // End UI
-            finalScore: document.getElementById('final-score-value')
+            finalScore: document.getElementById('final-score-value'),
+            endCard: document.querySelector('#screen-end .card'), // To change color
+            endClefVal: document.getElementById('end-clef-value'),
+            endDiffVal: document.getElementById('end-difficulty-value')
         };
     }
 
@@ -246,6 +254,11 @@ class GameEngine {
         this.ui.currentScore.textContent = "0";
 
         this.switchScreen('game');
+        this.switchScreen('game');
+
+        // Reset card colors just in case
+        this.ui.endCard.classList.remove('card-success', 'card-warning', 'card-danger');
+
         this.nextQuestion();
     }
 
@@ -425,6 +438,37 @@ class GameEngine {
         this.state.isPlaying = false;
         clearInterval(this.state.timerId);
         this.ui.finalScore.textContent = this.state.score;
+
+        // Populate Report Details
+        // Get translated text
+        const t = TRANSLATIONS[this.language];
+
+        // Map keys to translation keys or strings
+        const clefKey = 'clef_' + (this.config.clef === 'treble' ? 'sol' :
+            this.config.clef === 'bass' ? 'fa' :
+                this.config.clef === 'alto' ? 'do' : 'mixed');
+
+        // If config.clef is 'treble', we look for 'clef_sol' in translations
+        const clefText = t[clefKey] || this.config.clef;
+        const diffText = t[this.config.difficulty] || this.config.difficulty;
+
+        this.ui.endClefVal.textContent = clefText;
+        this.ui.endDiffVal.textContent = diffText;
+
+        // Apply Color Logic
+        this.ui.endCard.classList.remove('card-success', 'card-warning', 'card-danger');
+
+        if (this.state.score >= 10) {
+            this.ui.endCard.classList.add('card-success');
+            this.ui.endCard.querySelector('h2').textContent = "¡Excelente!"; // Or keep Game Over
+        } else if (this.state.score >= 6) {
+            this.ui.endCard.classList.add('card-warning');
+            this.ui.endCard.querySelector('h2').textContent = "¡Buen Trabajo!";
+        } else {
+            this.ui.endCard.classList.add('card-danger');
+            this.ui.endCard.querySelector('h2').textContent = "¡Sigue Practicando!";
+        }
+
         this.switchScreen('end');
     }
 

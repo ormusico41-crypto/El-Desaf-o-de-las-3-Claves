@@ -418,6 +418,76 @@ main {
     font-weight: 400;
 }
 
+/* Report Details */
+.report-details {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+}
+
+.report-item {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.report-item:last-child {
+    border-bottom: none;
+}
+
+/* Dynamic Card Colors */
+/* Default is white-ish (defined above), these override base .card properties if added */
+
+.card-success {
+    background: #58cc02 !important;
+    /* Green */
+    color: white !important;
+}
+
+.card-success h2,
+.card-success .final-score,
+.card-success .final-score .total,
+.card-success .report-item span,
+.card-success p {
+    color: white !important;
+}
+
+.card-warning {
+    background: #ffc800 !important;
+    /* Yellow */
+    color: #4b4b4b !important;
+}
+
+.card-warning h2,
+.card-warning .final-score {
+    color: #4b4b4b !important;
+}
+
+.card-warning .final-score .total {
+    color: #777 !important;
+}
+
+.card-danger {
+    background: #ff4757 !important;
+    /* Red */
+    color: white !important;
+}
+
+.card-danger h2,
+.card-danger .final-score,
+.card-danger .final-score .total,
+.card-danger .report-item span,
+.card-danger p {
+    color: white !important;
+}
+
 /* Footer */
 footer {
     text-align: center;
